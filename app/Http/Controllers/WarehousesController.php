@@ -33,6 +33,14 @@ class WarehousesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'capacity' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'area' => 'required',
+        ]);
+
         $data = Warehouses::create([
             'name' => $request->name,
             'capacity' => $request->capacity,
@@ -69,13 +77,21 @@ class WarehousesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'capacity' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'area' => 'required',
+        ]);
+
         Warehouses::where('id', $id)
                     ->update([
                         'name' => $request->name,
                         'capacity' => $request->capacity,
                         'city_id' => $request->city,
                         'address' => $request->address,
-                        'area_id' => $request->address
+                        'area_id' => $request->area
                     ]);
         return redirect()->route('warehouse.index');
     }

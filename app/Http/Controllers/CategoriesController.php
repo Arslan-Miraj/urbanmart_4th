@@ -29,6 +29,10 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         $data = Categories::create([
             'name' => $request->name,
         ]);
@@ -59,6 +63,10 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+        
         Categories::where('id', $id)
                     ->update([
                         'name' => $request->name,
@@ -73,7 +81,7 @@ class CategoriesController extends Controller
     {
         Categories::where('id', $id)
                     ->update([
-                        'deleted' = 1,
+                        'deleted' => 1,
                     ]);
         return redirect()->route('categories.index');
     }

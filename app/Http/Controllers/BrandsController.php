@@ -29,11 +29,15 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         $data = Brands::create([
             'name' => $request->name,
         ]);
         $data->save();
-        return redirect()->route('brands.index');
+        return to_route('brands.index');
     }
 
     /**
@@ -59,6 +63,10 @@ class BrandsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         Brands::where('id', $id)
                     ->update([
                         'name' => $request->name,

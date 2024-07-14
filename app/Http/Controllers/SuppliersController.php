@@ -22,6 +22,13 @@ class SuppliersController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'required',
+            'city' => 'required',
+            'email' => 'required',
+        ]);
+
         $data = Suppliers::create([
             'name' => $request->name,
             'phone_no' => $request->contact,
@@ -47,6 +54,13 @@ class SuppliersController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'required',
+            'city' => 'required',
+            'email' => 'required',
+        ]);
+        
         Suppliers::where('id', $id)
                     ->update([
                         'name' => $request->name,

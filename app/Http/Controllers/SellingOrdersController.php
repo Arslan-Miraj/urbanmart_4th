@@ -36,7 +36,11 @@ class SellingOrdersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'payment_method' => 'required',
+        ]);
+
         $data = SellingOrders::create([
             'customer_id' => $request->name,
             'sub_total' => $request->sub_total,
@@ -45,6 +49,7 @@ class SellingOrdersController extends Controller
             'payment_method' => $request->payment_method
         ]);
         $data->save();
+        
         foreach ($request->product as $key => $product) {
             $data1 = SellItems::create([
                 'sale_id' => $data->id,

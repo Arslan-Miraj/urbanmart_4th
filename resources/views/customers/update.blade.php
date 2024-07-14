@@ -29,22 +29,33 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" value="{{ $customers->name}}" required>
+                                 <input type="text" class="form-control" name="name" id="name" value="{{ $customers->name}}">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">City</label>
-                                 <select name="city" id="city" class="form-control" required>
-                                    <option value="{{ $customers->getCity->id }}">{{ $customers->getCity->name }}</option>
+                                 <select name="city" id="city" class="form-control">
+                                    <option value="">Select City</option>
                                     @foreach ($city_dropdown as $city)
-                                       <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                       <option value="{{ $city->id }}" @if ($city->id == $customers->city_id) selected @endif>
+                                          {{ $city->name }}
+                                       </option>
                                     @endforeach
                                  </select>
+                                 @error('city')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Address</label>
-                                 <input type="text" class="form-control" name="address" id="address" value="{{ $customers->address}}" required>
+                                 <input type="text" class="form-control" name="address" id="address" value="{{ $customers->address}}">
+                                 @error('address')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -54,12 +65,18 @@
 
                                     <div class="mb-3">
                                        <label class="form-label">Email</label>
-                                       <input type="text" class="form-control" name="email" id="email" value="{{ $customers->email }}" required>
+                                       <input type="text" class="form-control" name="email" id="email" value="{{ $customers->email }}">
+                                       @error('email')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Contact</label>
-                                       <input type="tel" class="form-control" name="contact" id="contact" value="{{ $customers->phone_number }}" required>
+                                       <input type="tel" class="form-control" name="contact" id="contact" value="{{ $customers->phone_number }}">
+                                       @error('contact')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                  </div>

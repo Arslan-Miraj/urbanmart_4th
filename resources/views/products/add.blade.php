@@ -28,27 +28,36 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" required>
+                                 <input type="text" class="form-control" name="name" id="name">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Category</label>
-                                 <select name="category_id" id="category" class="form-control" required>
+                                 <select name="category_id" id="category" class="form-control">
                                     <option value="" >Select Category</option>
                                     @foreach ($category_dropdown as $category)
                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('category_id')
+                                       <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Brands</label>
-                                 <select name="brand_id" id="brand" class="form-control" required>
+                                 <select name="brand_id" id="brand" class="form-control">
                                     <option value="">Select Brand</option>
                                     @foreach ($brand_dropdown as $brand)
                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('brand_id')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -58,22 +67,31 @@
 
                                     <div class="mb-3">
                                        <label class="form-label">Price</label>
-                                       <input type="text" class="form-control" name="unit_price" id="price" required>
+                                       <input type="text" class="form-control" name="unit_price" id="price">
+                                       @error('unit_price')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Suppliers</label>
-                                       <select name="supplier_id" id="supplier" class="form-control" required>
+                                       <select name="supplier_id" id="supplier" class="form-control">
                                           <option value="">Select Suppliers</option>
                                           @foreach ($supplier_dropdown as $supplier)
                                              <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                           @endforeach
                                        </select>
+                                       @error('supplier_id')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Quantity</label>
-                                       <input type="text" class="form-control" name="stock_quantity" id="quantity" required>
+                                       <input type="text" class="form-control" name="stock_quantity" id="quantity">
+                                       @error('stock_quantity')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
                                  </div>
                            </div>

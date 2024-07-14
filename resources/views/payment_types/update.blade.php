@@ -29,7 +29,10 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->name}}" required>
+                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->name}}">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
                         </div>
                      </div>

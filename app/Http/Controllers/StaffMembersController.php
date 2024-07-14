@@ -22,6 +22,13 @@ class StaffMembersController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'contact' => 'required',
+            'role' => 'required',
+        ]);
+
         $data = StaffMembers::create([
             'username' => $request->name,
             'email' => $request->email,
@@ -47,6 +54,13 @@ class StaffMembersController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'contact' => 'required',
+            'role' => 'required',
+        ]);
+        
         StaffMembers::where('id', $id)->update([
                         'username' => $request->name,
                         'email' => $request->email,

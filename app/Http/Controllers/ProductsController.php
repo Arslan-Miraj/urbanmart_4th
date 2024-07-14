@@ -27,6 +27,15 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required|',
+            'brand_id' => 'required|',
+            'supplier_id' => 'required|',
+            'unit_price' => 'required',
+            'stock_quantity' => 'required'
+        ]);
+
         $products = Products::create([
             'name' => $request->name,
             'category_id' => $request->category_id,
@@ -56,6 +65,15 @@ class ProductsController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required|',
+            'brand_id' => 'required|',
+            'supplier_id' => 'required|',
+            'unit_price' => 'required',
+            'stock_quantity' => 'required'
+        ]);
+
         Products::where('id', $id)
                     ->update([
                         'name' => $request->name,

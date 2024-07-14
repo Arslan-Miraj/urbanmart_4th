@@ -29,11 +29,17 @@
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
                                  <input type="text" class="form-control" name="name" id="name" value="" placeholder="Supplier Name">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Contact</label>
                                  <input type="tel" class="form-control" name="contact" id="contact" value="" placeholder="Phone No">
+                                 @error('contact')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
                            </div>
       
@@ -43,6 +49,9 @@
                                     <div class="mb-3">
                                        <label class="form-label">Email</label>
                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                       @error('email')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -53,6 +62,9 @@
                                              <option value="{{ $city->id }}">{{ $city->name }}</option>
                                           @endforeach
                                        </select>
+                                       @error('city')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
                                  </div>
                            </div>

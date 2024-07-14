@@ -36,6 +36,12 @@ class PurchasingOrdersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'payment_method' => 'required',
+            // 'product[]' => 'required',
+            // 'quantity[]' => 'required'
+        ]);
         
         $data = PurchasingOrders::create([
             'supplier_id' => $request->name,

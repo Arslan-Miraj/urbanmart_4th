@@ -29,17 +29,26 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->name}}" required>
+                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->name}}">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Capacity</label>
-                                 <input type="text" class="form-control" name="capacity" id="capacity" value="{{ $data->capacity}}" required>
+                                 <input type="text" class="form-control" name="capacity" id="capacity" value="{{ $data->capacity}}">
+                                 @error('capacity')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Address</label>
-                                 <input type="text" class="form-control" name="address" id="capacity" value="{{ $data->address}}" required>
+                                 <input type="text" class="form-control" name="address" id="capacity" value="{{ $data->address}}">
+                                 @error('address')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -49,22 +58,32 @@
 
                                     <div class="mb-3">
                                        <label class="form-label">City</label>
-                                       <select name="city" id="city" class="form-control" required>
-                                          <option value="{{ $data->getCity->id }}">{{ $data->getCity->name }}</option>
+                                       <select name="city" id="city" class="form-control">
+                                          <option value="">Select City</option>
                                           @foreach ($city_dropdown as $city)
-                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                             <option value="{{ $city->id }}" @if ($city->id == $data->city_id) selected @endif>
+                                                {{ $city->name }}
+                                             </option>
                                           @endforeach
                                        </select>
+                                       @error('city')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Area</label>
-                                       <select name="area" id="area" class="form-control" required>
-                                          <option value="{{ $data->getArea->id }}">{{ $data->getArea->name }}</option>
+                                       <select name="area" id="area" class="form-control">
+                                          <option value="">Select Area</option>
                                           @foreach ($area_dropdown as $area)
-                                             <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                             <option value="{{ $area->id }}" @if ($area->id == $data->area_id) selected @endif>
+                                                {{ $area->name }}
+                                             </option>
                                           @endforeach
                                        </select>
+                                       @error('area')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
                                     
                                  </div>

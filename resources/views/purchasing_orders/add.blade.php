@@ -93,12 +93,15 @@
 
                               <div class="mb-3">
                                  <label class="form-label">Supplier</label>
-                                 <select name="name" id="name" class="form-control" required>
+                                 <select name="name" id="name" class="form-control">
                                     <option value="">Select Supplier</option>
                                     @foreach ($supplier_dropdown as $supplier)
                                        <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
@@ -108,7 +111,7 @@
 
                               <div class="mb-3">
                                  <label class="form-label">Discount ( % )</label>
-                                 <input type="text" class="form-control" name="discount" id="discount" required>
+                                 <input type="text" class="form-control" name="discount" id="discount">
                               </div>
 
                               <div class="mb-3">
@@ -118,12 +121,15 @@
 
                               <div class="mb-3">
                                  <label class="form-label">Payment Method</label>
-                                 <select name="payment_method" id="payment_method" class="form-control" required>
+                                 <select name="payment_method" id="payment_method" class="form-control">
                                     <option value="">Select Method</option>
                                     @foreach ($payment_dropdown as $payment)
                                        <option value="{{ $payment->id }}">{{ $payment->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('payment_method')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>

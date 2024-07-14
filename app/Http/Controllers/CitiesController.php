@@ -29,6 +29,10 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         $data = Cities::create([
             'name' => $request->name,
         ]);
@@ -59,6 +63,10 @@ class CitiesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
         Cities::where('id', $id)
                     ->update([
                         'name' => $request->name,

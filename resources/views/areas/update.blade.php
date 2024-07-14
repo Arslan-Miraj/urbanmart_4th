@@ -30,7 +30,10 @@
 
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->name}}" required>
+                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->name}}">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -39,14 +42,19 @@
                               
                               <div class="mb-3">
                                  <label class="form-label">City</label>
-                                 <select name="city" id="city" class="form-control" required>
-                                    <option value="{{ $data->getCity->id }}">{{ $data->getCity->name }}</option>
+                                 <select name="city" id="city" class="form-control">
+                                    <option value="">Select City</option>
                                     @foreach ($city_dropdown as $city)
-                                       <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                       <option value="{{ $city->id }}"
+                                          @if ($city->id == $data->city_id) selected @endif>
+                                          {{ $city->name }}
+                                       </option>
                                     @endforeach
                                  </select>
+                                 @error('city')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
-
                            </div>
                         </div>
                      </div>

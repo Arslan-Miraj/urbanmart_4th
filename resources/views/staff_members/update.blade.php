@@ -29,12 +29,18 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->username}}" required>
+                                 <input type="text" class="form-control" name="name" id="name" value="{{ $data->username}}">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Email</label>
-                                 <input type="email" class="form-control" name="email" id="email" value="{{ $data->email}}" required>
+                                 <input type="email" class="form-control" name="email" id="email" value="{{ $data->email}}">
+                                 @error('email')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -44,17 +50,25 @@
 
                                     <div class="mb-3">
                                        <label class="form-label">Contact</label>
-                                       <input type="tel" class="form-control" name="contact" id="contact" value="{{ $data->contact_no }}" required>
+                                       <input type="tel" class="form-control" name="contact" id="contact" value="{{ $data->contact_no }}">
+                                       @error('contact')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Role</label>
-                                       <select name="role" id="role" class="form-control" required>
-                                          <option value="{{ $data->getRole->id }}">{{ $data->getRole->name }}</option>
+                                       <select name="role" id="role" class="form-control">
+                                          <option value="">Select Role</option>
                                           @foreach ($role_dropdown as $role)
-                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                             <option value="{{ $role->id }}" @if ($role->id == $data->role_id) selected @endif>
+                                                {{ $role->name }}
+                                             </option>
                                           @endforeach
                                        </select>
+                                       @error('role')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                  </div>

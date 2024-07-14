@@ -29,6 +29,10 @@ class PaymentTypesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
         $data = PaymentTypes::create([
             'name' => $request->name,
         ]);
@@ -59,6 +63,10 @@ class PaymentTypesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         PaymentTypes::where('id', $id)
                     ->update([
                         'name' => $request->name,

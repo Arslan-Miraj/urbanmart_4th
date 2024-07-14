@@ -29,17 +29,23 @@
 
                               <div class="mb-3">
                                  <label class="form-label">Warehouse</label>
-                                 <select name="warehouse" id="warehouse" class="form-control" required>
+                                 <select name="warehouse" id="warehouse" class="form-control">
                                     <option value="">Select Warehouse</option>
                                     @foreach ($warehouse_dropdown as $warehouse)
                                        <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('warehouse')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Stock Quantity</label>
-                                 <input type="text" class="form-control" name="stock_quantity" id="quantity" required>
+                                 <input type="text" class="form-control" name="stock_quantity" id="quantity">
+                                 @error('stock_quantity')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -49,12 +55,15 @@
 
                                     <div class="mb-3">
                                        <label class="form-label">Product</label>
-                                       <select name="product" id="product" class="form-control" required>
+                                       <select name="product" id="product" class="form-control">
                                           <option value="">Select Product</option>
                                           @foreach ($product_dropdown as $product)
                                              <option value="{{ $product->id }}">{{ $product->name }}</option>
                                           @endforeach
                                        </select>
+                                       @error('product')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                  </div>

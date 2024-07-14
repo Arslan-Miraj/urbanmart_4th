@@ -28,22 +28,31 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" required placeholder="Customer Name">
+                                 <input type="text" class="form-control" name="name" id="name" placeholder="Customer Name">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">City</label>
-                                 <select name="city" id="city" class="form-control" required>
+                                 <select name="city" id="city" class="form-control">
                                     <option value="" >Select City</option>
                                     @foreach ($city_dropdown as $city)
                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('city')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Address</label>
-                                 <input type="text" class="form-control" name="address" id="address" required placeholder="Customer Address">
+                                 <input type="text" class="form-control" name="address" id="address" placeholder="Customer Address">
+                                 @error('address')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -53,12 +62,18 @@
 
                                     <div class="mb-3">
                                        <label class="form-label">Email</label>
-                                       <input type="email" class="form-control" name="email" id="email" required placeholder="Customer Email">
+                                       <input type="email" class="form-control" name="email" id="email" placeholder="Customer Email">
+                                       @error('email')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Contact</label>
-                                       <input type="tel" class="form-control" name="contact" id="contact" required placeholder="Customer Contact No">
+                                       <input type="tel" class="form-control" name="contact" id="contact" placeholder="Customer Contact No">
+                                       @error('contact')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
                                  </div>
                            </div>

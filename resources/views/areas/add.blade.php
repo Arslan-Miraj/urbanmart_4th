@@ -29,7 +29,10 @@
 
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" placeholder="Area Name" required>
+                                 <input type="text" class="form-control" name="name" id="name" placeholder="Area Name">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>
@@ -38,12 +41,15 @@
                               
                               <div class="mb-3">
                                  <label class="form-label">City</label>
-                                 <select name="city" id="city" class="form-control" required>
+                                 <select name="city" id="city" class="form-control">
                                     <option value="">Select City</option>
                                     @foreach ($city_dropdown as $city)
                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                  </select>
+                                 @error('city')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                            </div>

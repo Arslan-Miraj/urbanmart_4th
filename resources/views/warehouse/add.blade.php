@@ -28,17 +28,26 @@
                            <div class="col-lg-6">
                               <div class="mb-3">
                                  <label class="form-label">Name</label>
-                                 <input type="text" class="form-control" name="name" id="name" placeholder="Warehouse Name" required>
+                                 <input type="text" class="form-control" name="name" id="name" placeholder="Warehouse Name">
+                                 @error('name')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Capacity</label>
-                                 <input type="text" class="form-control" name="capacity" id="capacity" placeholder="Warehouse Capacity" required>
+                                 <input type="text" class="form-control" name="capacity" id="capacity" placeholder="Warehouse Capacity">
+                                 @error('capacity')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
                               <div class="mb-3">
                                  <label class="form-label">Address</label>
-                                 <input type="text" class="form-control" name="Address" id="address" placeholder="Warehouse Address" required>
+                                 <input type="text" class="form-control" name="address" id="address" placeholder="Warehouse Address">
+                                 @error('address')
+                                    <div class="text-danger"> {{ $message}}</div>
+                                 @enderror
                               </div>
 
 
@@ -48,22 +57,28 @@
                                  <div class="mt-3 mt-lg-0">
                                     <div class="mb-3">
                                        <label class="form-label">City</label>
-                                       <select name="city" id="city" class="form-control" required>
+                                       <select name="city" id="city" class="form-control">
                                           <option value="">Select City</option>
                                           @foreach ($city_dropdown as $city)
                                              <option value="{{ $city->id }}">{{ $city->name }}</option>
                                           @endforeach
                                        </select>
+                                       @error('city')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
 
                                     <div class="mb-3">
                                        <label class="form-label">Area</label>
-                                       <select name="area" id="area" class="form-control" required>
+                                       <select name="area" id="area" class="form-control">
                                           <option value="">Select Area</option>
                                           @foreach ($area_dropdown as $area)
                                              <option value="{{ $area->id }}">{{ $area->name }}</option>
                                           @endforeach
                                        </select>
+                                       @error('area')
+                                          <div class="text-danger"> {{ $message}}</div>
+                                       @enderror
                                     </div>
                                  </div>
                            </div>

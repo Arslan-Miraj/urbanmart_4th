@@ -34,6 +34,12 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'product' => 'required',
+            'warehouse' => 'required',
+            'stock_quantity' => 'required'
+        ]);
+
         $data = Inventory::create([
             'warehouse_id' => $request->warehouse,
             'product_id' => $request->product,
@@ -68,6 +74,12 @@ class InventoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'product' => 'required',
+            'warehouse' => 'required',
+            'stock_quantity' => 'required'
+        ]);
+
         Inventory::where('id', $id)
                     ->update([
                         'warehouse_id' => $request->warehouse,
